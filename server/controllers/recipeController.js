@@ -1,7 +1,7 @@
 require('../models/database');
 const Category = require('../models/Category');
 const Recipe = require('../models/Recipe');
-
+const User = require('./models/User');
 
 
 /**
@@ -253,3 +253,37 @@ exports.signIn = async(req, res) => {
     const infoSubmitObj = req.flash('infoSubmit');
     res.render('signIn', { title: 'Cooking Blog - Sign in', infoSubmitObj, infoErrorsObj});
 }
+
+
+
+/**
+ * POST /RegistrationOnPost
+ *  
+ *  
+ */
+
+
+exports.signInOnPost = async(req, res) => {
+
+    try {     
+
+        const newUser = new User({
+            name: req.body.name,
+            password: req.body.name
+        });
+
+        await newUser.save();
+
+
+        req.flash('infoSubmit', 'Registration Succesfull')
+        res.redirect('/signIn');
+    } catch (error) {
+        req.flash('infoErrors', error);
+        res.redirect('/signIn');
+    }
+
+
+
+
+}
+

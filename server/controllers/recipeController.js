@@ -235,3 +235,21 @@ exports.submitRecipeOnPost = async(req, res) => {
 
 
 }
+
+
+
+
+/**
+ * 
+ *  GET /sign_in
+ *  
+ *  
+ */
+
+
+
+exports.signIn = async(req, res) => {
+    const infoErrorsObj = req.flash('infoErrors');
+    const infoSubmitObj = req.flash('infoSubmit');
+    res.render('signIn', { title: 'Cooking Blog - Sign in', infoSubmitObj, infoErrorsObj});
+}

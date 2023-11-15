@@ -1,7 +1,7 @@
 require('../models/database');
 const Category = require('../models/Category');
 const Recipe = require('../models/Recipe');
-const User = require('./models/User');
+const User = require('../models/Users');
 
 
 /**
@@ -251,7 +251,7 @@ exports.submitRecipeOnPost = async(req, res) => {
 exports.signIn = async(req, res) => {
     const infoErrorsObj = req.flash('infoErrors');
     const infoSubmitObj = req.flash('infoSubmit');
-    res.render('signIn', { title: 'Cooking Blog - Sign in', infoSubmitObj, infoErrorsObj});
+    res.render('signIn', { title: 'Cooking Blog - Sign in', infoErrorsObj, infoSubmitObj});
 }
 
 
@@ -281,8 +281,6 @@ exports.signInOnPost = async(req, res) => {
         req.flash('infoErrors', error);
         res.redirect('/signIn');
     }
-
-
 
 
 }

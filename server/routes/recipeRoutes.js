@@ -17,7 +17,7 @@ router.get('/random-recipe', recipeController.randomRecipe);
 router.get('/submit-recipe', recipeController.submitRecipe);
 router.post('/submit-recipe', recipeController.submitRecipeOnPost);
 router.get('/signIn', recipeController.signIn);
-
+router.post('/signIn',recipeController.signInOnPost);
 
 
 

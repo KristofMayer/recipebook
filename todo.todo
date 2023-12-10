@@ -1,0 +1,24 @@
+// Project todo
+//
+
+
+// 
+//
+// Main Project
+//
+//
+Main project:
+    ☐ Integrate Google auth for login & post
+    ☐ Hide submit page when not logged in 
+    ☐ Show submit page when logged in 
+    ☐ Pack up MongoDB to docker
+    ☐ Deploy app to cloud
+
+// 
+//
+// Side Quest
+//
+//
+Side Quests:
+    ☐ Find out aout webhooks
+    ☐ Create webhooks ability to push updates to Discord

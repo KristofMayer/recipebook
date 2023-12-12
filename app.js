@@ -4,6 +4,9 @@ const fileUpload = require('express-fileupload');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
+const passport = require('passport');
+const findOrCreate = require('mongoose-findorcreate');
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -23,6 +26,8 @@ app.use(session({
     saveUninitialized: true,
     resave: true
 }));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(flash());
 app.use(fileUpload());
 
@@ -32,6 +37,7 @@ app.set('view engine', 'ejs');
 //Routing
 
 const routes = require('./server/routes/recipeRoutes.js');
+const passport = require('passport');
 app.use('/', routes);
 
 app.listen(port, ()=> console.log(`Linstening to port ${port}`));

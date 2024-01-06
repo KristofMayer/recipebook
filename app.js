@@ -5,9 +5,10 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
 const passport = require('passport');
-require("./passportConfig")(passport);
+const initializePassport = require('./server/config/passport');
+require("./server/config/passport.js")(passport);
 const findOrCreate = require('mongoose-findorcreate');
-const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+const GoogleStrategy = require('passport-google-oauth20').Strategy
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -19,6 +20,7 @@ require('dotenv').config();
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
 app.use(expressLayouts);
+app.use(cookieParser());
 
 
 app.use(cookieParser('CookieBlogSecure'));
@@ -27,6 +29,10 @@ app.use(session({
     saveUninitialized: true,
     resave: true
 }));
+
+//passport middleware
+
+initializePassport(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
@@ -37,9 +43,18 @@ app.set('view engine', 'ejs');
 
 //Routing
 
+const auth = require('./server/routes/auth.js');
 const routes = require('./server/routes/recipeRoutes.js');
-const passport = require('passport');
+app.use('/', auth)
 app.use('/', routes);
+
+app.use('/logout', (req, res) => {
+    req.session.destroy();
+    res.redirect('/');
+    console.log('logged out succesfully');
+})
+
+
 
 app.listen(port, ()=> console.log(`Linstening to port ${port}`));
 

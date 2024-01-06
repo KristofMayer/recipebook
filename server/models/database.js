@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-require('dotenv');
+require('dotenv').config();
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser : true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
@@ -13,3 +13,4 @@ db.once('open', function(){
 
 require('./Category');
 require('./Recipe');
+require('./Users');

@@ -2,7 +2,7 @@ require('../models/database');
 const Category = require('../models/Category');
 const Recipe = require('../models/Recipe');
 const User = require('../models/Users');
-
+require('dotenv').config();
 
 /**
  *  GET /
@@ -24,7 +24,7 @@ exports.homepage = async(req, res) => {
 
 
 
-        res.render('index', { title: 'Cooking Blog - Home', categories, food });
+        res.render('index', { title: 'Cooking Blog - Home', categories, food, userinfo:req.user });
     } catch(error) {
         res.status(500).send({message: error.message || "Error Occured"});
     }
@@ -136,7 +136,6 @@ exports.exploreLatest = async(req, res) => {
 }
 
 
-
 /**
  * 
  *  GET /random-recipe
@@ -144,7 +143,6 @@ exports.exploreLatest = async(req, res) => {
  * Explore Random recipe
  *  
  */
-
 
 
 exports.randomRecipe = async(req, res) => {
@@ -162,9 +160,6 @@ exports.randomRecipe = async(req, res) => {
 }
 
 
-
-
-
 /**
  * 
  *  GET /submit-recipe
@@ -179,8 +174,6 @@ exports.submitRecipe = async(req, res) => {
     const infoSubmitObj = req.flash('infoSubmit');
     res.render('submit-recipe', { title: 'Cooking Blog - Submit', infoSubmitObj, infoErrorsObj});
 }
-
-
 
 
 /**
@@ -225,18 +218,13 @@ exports.submitRecipeOnPost = async(req, res) => {
 
 
         req.flash('infoSubmit', 'Recipe has been added.')
-        res.redirect('/submit-recipe');
+        res.redirect('submit-recipe');
     } catch (error) {
         req.flash('infoErrors', error);
-        res.redirect('/submit-recipe');
+        res.redirect('submit-recipe');
     }
 
-
-
-
 }
-
-
 
 
 /**
@@ -247,41 +235,10 @@ exports.submitRecipeOnPost = async(req, res) => {
  */
 
 
-
 exports.signIn = async(req, res) => {
     const infoErrorsObj = req.flash('infoErrors');
     const infoSubmitObj = req.flash('infoSubmit');
-    res.render('signIn', { title: 'Cooking Blog - Sign in', infoErrorsObj, infoSubmitObj});
+    res.render('signIn', { title: 'Cooking Blog - Sign in'});
 }
 
-
-
-/**
- * POST /RegistrationOnPost
- *  
- *  
- */
-
-
-exports.signInOnPost = async(req, res) => {
-
-    try {     
-
-        const newUser = new User({
-            name: req.body.name,
-            password: req.body.name
-        });
-
-        await newUser.save();
-
-
-        req.flash('infoSubmit', 'Registration Succesfull')
-        res.redirect('/signIn');
-    } catch (error) {
-        req.flash('infoErrors', error);
-        res.redirect('/signIn');
-    }
-
-
-}
 

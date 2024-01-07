@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+   <link type="image/png" sizes="32x32" rel="icon" href="/img/icons8-junk-food-32.png"> 
     <title>
         <%= typeof title != 'undefined' ? title: 'Cooking Blog - Made with Node.js' %>
     </title>
@@ -24,15 +24,11 @@
                 <li>
                     <a href="/home"   class="nav-link px-2 link-secondary">Home</a>
                 </li>
-
                 <li>
                     <a href="/submit-recipe"   class="nav-link px-2 link-secondary">Submit</a>
                 </li>
-                <li>
-                    <a href="/signIn"   class="nav-link px-2 link-secondary">Login</a>
-                </li>
-                <li>
-                    <a href="/logout"   class="nav-link px-2 link-secondary">Logout</a>
+                <li class="d-flex flex-row justify-content-center">
+                    <a href="/google"   class="nav-link px-2 link-success opacity-75">Login </a> <span class="align-self-center">/</span> <a href="/logout"   class="nav-link px-2 link-danger opacity-75"> Logout</a>
                 </li>
             </ul>
             <div class="col-md-3 text-end align-items-end mt-auto">
@@ -44,18 +40,18 @@
         <main>
     <%- body -%>
             </main>
-        <footer class="py-5">
-            <p>
-                <a href="https://www.freepik.com/free-vector/hand-drawn-miscellaneous-doodle-illustration_49287062.htm#query=food%20svg&position=2&from_view=keyword&track=ais">Image by pikisuperstar</a> on Freepik
+        <footer class="py-5 text-body-secondary text-center">
+            <p class="m-0 p-0">
+                <a class="link-secondary m-0 p-0" href="https://www.freepik.com/free-vector/hand-drawn-miscellaneous-doodle-illustration_49287062.htm#query=food%20svg&position=2&from_view=keyword&track=ais">Image by pikisuperstar</a> on Freepik
             </p>
-            <p>
-                <a href="https://www.vecteezy.com/free-vector/american-food">American Food Vectors by Vecteezy</a>
+            <p class="m-0 p-0">
+                <a class="link-secondary m-0 p-0" href="https://www.vecteezy.com/free-vector/american-food">American Food Vectors by Vecteezy</a>
             </p>
-            <p>
-                <a href="https://www.vecteezy.com/free-vector/skull">Skull Vectors by Vecteezy</a>
+            <p class="m-0 p-0">
+                <a class="link-secondary m-0 p-0" href="https://www.vecteezy.com/free-vector/skull">Skull Vectors by Vecteezy</a>
             </p>
-            <p>
-                <a href="https://www.vecteezy.com/free-vector/asian-food">Asian Food Vectors by Vecteezy</a>
+            <p class="m-0 p-0">
+                <a class="link-secondary m-0 p-0" href="https://www.vecteezy.com/free-vector/asian-food">Asian Food Vectors by Vecteezy</a>
             </p>
         </footer>
 

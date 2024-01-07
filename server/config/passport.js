@@ -1,3 +1,4 @@
+//The Google strategy file for the google login authentication
 // import all the things we need  
 const GoogleStrategy = require('passport-google-oauth20').Strategy
 const mongoose = require('mongoose')

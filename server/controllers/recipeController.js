@@ -1,3 +1,4 @@
+// These are the controllers, the logic for each GET/POST request
 require('../models/database');
 const Category = require('../models/Category');
 const Recipe = require('../models/Recipe');
@@ -62,7 +63,7 @@ exports.exploreRecipe = async(req, res) => {
 
        const recipe = await Recipe.findById(recipeId);
 
-        res.render('recipe', { title: 'Cooking Blog - Recipe', recipe });
+        res.render('recipe', { title: 'Cooking Blog - Recipe', recipe, isAuthenticated: req.isAuthenticated() });
     } catch(error) {
         res.status(500).send({message: error.message || "Error Occured"});
     }
@@ -242,3 +243,28 @@ exports.signIn = async(req, res) => {
 }
 
 
+/**
+ * 
+ * 
+ * Delete recipe
+ * /delete/recipe/:id
+ * 
+ * 
+ */
+
+exports.deleteRecipe = async (req, res) => {
+    const recipeId = req.params.id;
+
+    try {
+        // Use Recipe.findByIdAndDelete() to delete the recipe by ID
+        const data = await Recipe.findByIdAndDelete(recipeId);
+        if (!data) {
+            return res.status(404).json({ message: "Recipe not found" });
+        }
+
+        // Redirect to a page or send a response as needed
+        res.redirect('/'); // Redirect to the home page after deletion, for example
+    } catch (error) {
+        res.status(500).json({ message: error.message || "Error occurred" });
+    }
+};

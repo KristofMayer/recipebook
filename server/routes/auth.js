@@ -1,3 +1,4 @@
+// The authentication routes, these routes for the google login 
 const express = require('express')
 const passport = require('passport')
 const router = express.Router()

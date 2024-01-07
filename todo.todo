@@ -8,12 +8,13 @@
 //
 //
 Main project:
-    ☐ Integrate Google auth for login & post
+    ✔ Integrate Google auth for login & post @done(24-01-06 21:34)
     ☐ Hide submit page when not logged in 
     ☐ Show submit page when logged in 
     ☐ Pack up MongoDB to docker
     ☐ Deploy app to cloud
-
+    ☐ Create admin page
+    ☐ Maybe try with Nuxt 3
 // 
 //
 // Side Quest

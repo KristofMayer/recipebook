@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-
+// simple authentication file, checking if the user is authenticated and redirect accordingly
 
 
 module.exports = {
@@ -9,7 +9,7 @@ module.exports = {
     if (req.isAuthenticated()) {
       return next();
     } else {
-      res.redirect(process.env.LOGIN_REDIRECT_URL || '/');
+      res.redirect(process.env.LOGIN_REDIRECT_URL || '/signIn');
     }
   },
 

@@ -1,3 +1,4 @@
+// The main router file wherer all of the routes declared
 const express = require('express');
 const router = express.Router();
 const recipeController = require('../controllers/recipeController');
@@ -10,10 +11,10 @@ require('dotenv').config();
  *  App routes
  */
 
-router.get('/', ensureGuest, recipeController.signIn);
-router.get('/home', ensureAuth, recipeController.homepage);
+router.get('/', recipeController.homepage);
+router.get('/home', recipeController.homepage);
 router.get('/categories', recipeController.exploreCategories);
-router.get('/recipe/:id', recipeController.exploreRecipe);
+router.route('/recipe/:id').get(recipeController.exploreRecipe).post(recipeController.deleteRecipe).delete(recipeController.deleteRecipe);
 router.get('/categories/:id', recipeController.exploreCategoriesById);
 router.post('/search', recipeController.searchRecipes);
 router.get('/explore-latest', recipeController.exploreLatest);

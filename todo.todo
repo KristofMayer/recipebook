@@ -9,17 +9,20 @@
 //
 Main project:
     ✔ Integrate Google auth for login & post @done(24-01-06 21:34)
-    ☐ Hide submit page when not logged in 
-    ☐ Show submit page when logged in 
-    ☐ Pack up MongoDB to docker
+    ✔ Add delete functionality @done(24-01-07 07:33)
+    ☐ Use MongoDB Atlas to deploy to google cloud
+    ☐ Get free costume domain name for the app
+    ☐ write comments
+    ☐ write Readme file
+    ☐ Pack up app into docker
     ☐ Deploy app to cloud
-    ☐ Create admin page
-    ☐ Maybe try with Nuxt 3
+    ✘ Create admin page @cancelled(24-01-07 07:32)
+    ✘ Maybe try with Nuxt 3 @cancelled(24-01-07 07:32)
 // 
 //
 // Side Quest
 //
 //
 Side Quests:
-    ☐ Find out aout webhooks
-    ☐ Create webhooks ability to push updates to Discord
+    ✘ Find out aout webhooks @cancelled(24-01-07 07:35)
+    ✘ Create webhooks ability to push updates to Discord @cancelled(24-01-07 07:35)
